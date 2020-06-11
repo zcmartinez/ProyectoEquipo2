@@ -1,0 +1,12 @@
+#Encontrar el K Óptimo haciendo método del codo
+X = np.array(df_Hospitales[['LONGITUD', 'LATITUD']])
+
+Nc = range(1,10)
+kmeans = [KMeans(n_clusters=i) for i in Nc]
+score = [kmeans[i].fit(X).score(X) for i in range(len(kmeans))]
+plt.plot(Nc, score, 'bx-')
+plt.grid(True)
+plt.xlabel('Number of Clusters')
+plt.ylabel('Score')
+plt.title('Método del codo')
+plt.show()
